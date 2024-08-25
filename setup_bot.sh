@@ -27,6 +27,7 @@ CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
 CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
 
 wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
+sudo apt install -y unzip  # Garantir que unzip está instalado
 unzip chromedriver_linux64.zip
 sudo mv chromedriver /usr/local/bin/
 sudo chmod +x /usr/local/bin/chromedriver
@@ -38,13 +39,16 @@ chromedriver --version
 sudo npm install -g pm2
 
 # Clona o repositório do bot (substitua pela URL do seu repositório)
-git clone https://github.com/seuusuario/seubot.git
+git clone https://github.com/JhonasRG/m4lware-bot
 
 # Navega até a pasta do bot
-cd seubot
+cd m4lware-bot
+
+# Instala as dependências do projeto
+npm install
 
 # Inicia o bot com PM2
-pm2 start index.js --name "whatsapp-bot"
+pm2 start index.js --name "m4lware-bot"
 
 # Configura o PM2 para iniciar o bot na inicialização do sistema
 pm2 startup systemd
