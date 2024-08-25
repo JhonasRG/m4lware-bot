@@ -52,10 +52,12 @@ async function downloadAudio(url, nomeDoArquivo) {
 }
 
 const client = new Client({
-    authStrategy: new LocalAuth()
+    authStrategy: new LocalAuth(),
     puppeteer: {headless:false
                 args:['--no-sandbox',
-                      '--disable-gpu',],}
+                      '--disable-gpu',
+                     ],
+    }
 });
 
 let userState = {}; // Variável para rastrear o estado do usuário
